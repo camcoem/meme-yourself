@@ -26,24 +26,27 @@ fetch(
     });
   })
   .then(
-    (response) =>
-      (document.getElementById(
-        "memeImg"
-      ).innerHTML = `<img src='${response}'/>`)
-  )
+    (response) =>{
+      const img = document.createElement("img"); 
+      img.src = `${response}`;
+      document.body.appendChild(img); //removed innerHTML due to best practices
+      // (document.getElementById(
+      //   "memeImg"
+      // ).innerHTML = `<img src='${response}'/>`)
+  })
   .catch((err) => console.error(err));
 
 //gallery below
 
-fetch("https://ronreiter-meme-generator.p.rapidapi.com/images", options)
-  .then((response) => response.json())
-  .then((response) => {
-    //     //const images = response.map((meme) =>`<img src='http://apimeme.com/thumbnail?name=${meme}' />`);
-    response.forEach((meme) => {
-      const img = document.createElement("img");
-      img.src = `http://apimeme.com/thumbnail?name=${meme}`;
-      document.body.appendChild(img); //append by ID, to the gallery page 
-    });
-    //     //document.body.innerHTML=images.join('') // innerHTML might not be the best choice as there are some security flaws SQLi XSS
-  })
-  .catch((err) => console.error(err));
+// fetch("https://ronreiter-meme-generator.p.rapidapi.com/images", options)
+//   .then((response) => response.json())
+//   .then((response) => {
+//     //     //const images = response.map((meme) =>`<img src='http://apimeme.com/thumbnail?name=${meme}' />`);
+//     response.forEach((meme) => {
+//       const img = document.createElement("img");
+//       img.src = `http://apimeme.com/thumbnail?name=${meme}`;
+//       document.body.appendChild(img); //append by ID, to the gallery page 
+//     });
+//     //     //document.body.innerHTML=images.join('') // innerHTML might not be the best choice as there are some security flaws SQLi XSS
+//   })
+//   .catch((err) => console.error(err));
