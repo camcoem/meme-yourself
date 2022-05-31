@@ -7,46 +7,50 @@ const options = {
 };
 
 const meme = "Condescending-Wonka";
-const topText = "Hello";
-const bottomText = "World";
+const topText = document.getElementById("topText").value; //to get the input from the user
+const bottomText = document.getElementById("bottomText").value;
+const fontsize = 50;
 
-fetch(
-  `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${meme}&bottom=${bottomText}&top=${topText}`,
-  options
-)
-  .then((response) => response.blob())
-  .then((response) => {
-    return new Promise((resolve) => {
-      var reader = new FileReader(); //converts bynary in base64
-      reader.readAsDataURL(response); // read this bynary as DataURL
-      reader.onloadend = function () {
-        var base64data = reader.result;
-        resolve(base64data);
-      };
-    });
-  })
-  .then(
-    (response) =>{
-      const img = document.createElement("img"); 
+function generateMeme() {
+  fetch(
+    `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${meme}&bottom=${bottomText}&top=${topText}&font_size=${fontsize}`,
+    options
+  )
+    .then((response) => response.blob())
+    .then((response) => {
+      return new Promise((resolve) => {
+        var reader = new FileReader(); //converts bynary in base64
+        reader.readAsDataURL(response); // read this bynary as DataURL
+        reader.onloadend = function () {
+          var base64data = reader.result;
+          resolve(base64data);
+        };
+      });
+    })
+    .then((response) => {
+      const img = document.createElement("img");
       img.src = `${response}`;
       document.body.appendChild(img); //removed innerHTML due to best practices
       // (document.getElementById(
       //   "memeImg"
       // ).innerHTML = `<img src='${response}'/>`)
-  })
-  .catch((err) => console.error(err));
+    })
+    .catch((err) => console.error(err));
+}
 
 //gallery below
 
-// fetch("https://ronreiter-meme-generator.p.rapidapi.com/images", options)
-//   .then((response) => response.json())
-//   .then((response) => {
-//     //     //const images = response.map((meme) =>`<img src='http://apimeme.com/thumbnail?name=${meme}' />`);
-//     response.forEach((meme) => {
-//       const img = document.createElement("img");
-//       img.src = `http://apimeme.com/thumbnail?name=${meme}`;
-//       document.body.appendChild(img); //append by ID, to the gallery page 
-//     });
-//     //     //document.body.innerHTML=images.join('') // innerHTML might not be the best choice as there are some security flaws SQLi XSS
-//   })
-//   .catch((err) => console.error(err));
+function generateGallery() {
+  fetch("https://ronreiter-meme-generator.p.rapidapi.com/images", options)
+    .then((response) => response.json())
+    .then((response) => {
+      //     //const images = response.map((meme) =>`<img src='http://apimeme.com/thumbnail?name=${meme}' />`);
+      response.forEach((meme) => {
+        const img = document.createElement("img");
+        img.src = `http://apimeme.com/thumbnail?name=${meme}`;
+        document.body.appendChild(img); //append by ID, to the gallery page
+      });
+      //     //document.body.innerHTML=images.join('') // innerHTML might not be the best choice as there are some security flaws SQLi XSS
+    })
+    .catch((err) => console.error(err));
+}
