@@ -8,14 +8,13 @@ const options = {
 
 const meme = "Advice-Yoda";
 
-//const fontsize = 14;
-
 function generateMeme() {
   const topText = document.getElementById("topText").value; //to get the input from the user
   const bottomText = document.getElementById("bottomText").value;
+  const fontSize = document.getElementById("fontSize").value;
 
   fetch(
-    `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${meme}&bottom=${bottomText}&top=${topText}`,
+    `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${meme}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`,
     options
   )
     .then((response) => response.blob())
@@ -32,10 +31,10 @@ function generateMeme() {
     .then((response) => {
       const img = document.createElement("img");
       img.src = `${response}`;
-      document.body.appendChild(img); //removed innerHTML due to best practices
-      // (document.getElementById(
-      //   "memeImg"
-      // ).innerHTML = `<img src='${response}'/>`)
+      if (document.querySelector("img") !== null ) {
+        document.querySelector("img").remove()
+      }
+      document.body.appendChild(img);
     })
     .catch((err) => console.error(err));
 }
@@ -56,3 +55,25 @@ function generateGallery() {
     })
     .catch((err) => console.error(err));
 }
+
+
+// fetch('https://ronreiter-meme-generator.p.rapidapi.com/images', options)
+// 	.then(response => response.json())
+// 	.then(response => console.log(response))
+// 	.catch(err => console.error(err));
+
+
+
+// var select = document.getElementById("selectNumber");
+// var options = ["1", "2", "3", "4", "5"];
+
+// for(var i = 0; i < options.length; i++) {
+//     var opt = options[i];
+//     var el = document.createElement("option");
+//     el.textContent = opt;
+//     el.value = opt;
+//     select.appendChild(el);
+// }
+// <select id="selectNumber">
+//     <option>Choose a number</option>
+// </select>
