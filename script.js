@@ -6,14 +6,14 @@ const options = {
   },
 };
 
-const meme = "Condescending-Wonka";
+const meme = "Advice-Yoda";
 const topText = document.getElementById("topText").value; //to get the input from the user
 const bottomText = document.getElementById("bottomText").value;
-const fontsize = 50;
+//const fontsize = 14;
 
 function generateMeme() {
   fetch(
-    `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${meme}&bottom=${bottomText}&top=${topText}&font_size=${fontsize}`,
+    `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${meme}&bottom=${bottomText}&top=${topText}`,
     options
   )
     .then((response) => response.blob())
