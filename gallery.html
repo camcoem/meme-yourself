@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>MemeYourSelf Gallery</title>
   </head>
   <body class="body-gallery">
@@ -14,9 +15,10 @@
         <a href="contact.html"><li>Contact</li></a>
       </ul>
     </nav>
-    <div id="gallery">
-      <button onclick="generateGallery()">Generate Gallery</button>
-    </div>
+    <button class="btnGallery" onclick="generateGallery()">
+      Generate Gallery
+    </button>
+    <div id="gallery"></div>
     <script src="script.js"></script>
   </body>
 </html>

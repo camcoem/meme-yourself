@@ -48,11 +48,17 @@ function generateGallery() {
       response.forEach((meme) => {
         const img = document.createElement("img");
         img.src = `http://apimeme.com/thumbnail?name=${meme}`;
-        img.classList.add("galleryImg");
-        document.body.appendChild(img); //append by ID, to the gallery page
+        // img.classList.add("card");
+        const divCard = document.createElement("div");
+        divCard.classList.add("card");
+        //document.getElementById("gallery").appendChild(img); //append by ID, to the gallery page
+        document
+          .getElementById("gallery")
+          .appendChild(divCard)
+          .appendChild(img);
       });
-    })
-    .catch((err) => console.error(err));
+    });
+  //.catch((err) => console.error(err));
 }
 
 function arrayImg() {
