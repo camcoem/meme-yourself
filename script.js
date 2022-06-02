@@ -31,8 +31,8 @@ function generateMeme() {
     .then((response) => {
       const img = document.createElement("img");
       img.src = `${response}`;
-      if (document.querySelector("img") !== null ) {
-        document.querySelector("img").remove()
+      if (document.querySelector("img") !== null) {
+        document.querySelector("img").remove();
       }
       document.body.appendChild(img);
     })
@@ -45,35 +45,33 @@ function generateGallery() {
   fetch("https://ronreiter-meme-generator.p.rapidapi.com/images", options)
     .then((response) => response.json())
     .then((response) => {
-      //     //const images = response.map((meme) =>`<img src='http://apimeme.com/thumbnail?name=${meme}' />`);
       response.forEach((meme) => {
         const img = document.createElement("img");
         img.src = `http://apimeme.com/thumbnail?name=${meme}`;
+        img.classList.add("galleryImg");
         document.body.appendChild(img); //append by ID, to the gallery page
       });
-      //     //document.body.innerHTML=images.join('') // innerHTML might not be the best choice as there are some security flaws SQLi XSS
     })
     .catch((err) => console.error(err));
 }
 
+function arrayImg() {
+  const imgNames = [];
+  var select = document.getElementById("selectImg");
 
-// fetch('https://ronreiter-meme-generator.p.rapidapi.com/images', options)
-// 	.then(response => response.json())
-// 	.then(response => console.log(response))
-// 	.catch(err => console.error(err));
+  fetch("https://ronreiter-meme-generator.p.rapidapi.com/images", options)
+    .then((response) => response.json())
+    .then((response) => {
+      let arrayJson = response;
+      imgNames.push(arrayJson);
 
-
-
-// var select = document.getElementById("selectNumber");
-// var options = ["1", "2", "3", "4", "5"];
-
-// for(var i = 0; i < options.length; i++) {
-//     var opt = options[i];
-//     var el = document.createElement("option");
-//     el.textContent = opt;
-//     el.value = opt;
-//     select.appendChild(el);
-// }
-// <select id="selectNumber">
-//     <option>Choose a number</option>
-// </select>
+      for (var i = 0; i < imgNames.length; i++) {
+        var opt = imgNames[i];
+        var el = document.createElement("option");
+        el.textContent = opt;
+        el.value = opt;
+        select.appendChild(el);
+      }
+    })
+    .catch((err) => console.error(err));
+}
