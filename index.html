@@ -15,19 +15,23 @@
         <a href="contact.html"><li>Contact</li></a>
       </ul>
     </nav>
-    <div class="container">
-      <select id="selectImg" onclick="arrayImg()">
-        <option>Choose your meme image</option>
-      </select>
-      <input type="text" id="topText" placeholder="Header text..." />
-      <br /><br />
-      <input type="text" id="bottomText" placeholder="Bottom text..." />
-      <br />
-      <input type="number" id="fontSize" placeholder="Select fontsize..." />
-    </div>
+    <div class="try">
+      <div class="container">
+        <select id="selectImg" onclick="arrayImg()">
+          <option>Choose your meme image</option>
+        </select>
+        <input type="text" id="topText" placeholder="Header text..." />
+        <br /><br />
+        <input type="text" id="bottomText" placeholder="Bottom text..." />
+        <br />
+        <input type="number" id="fontSize" placeholder="Select fontsize..." />
+      </div>
 
-    <div id="memeImg">
-      <button onclick="generateMeme()">Meme Yourself</button>
+      <div id="memeImg">
+        <button onclick="generateMeme()">
+          <span class="button_top">Meme Yourself</span>
+        </button>
+      </div>
     </div>
     <script src="script.js"></script>
   </body>
