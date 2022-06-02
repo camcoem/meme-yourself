@@ -16,13 +16,16 @@
       </ul>
     </nav>
     <div class="container">
+      <select id="selectImg" onclick="arrayImg()">
+        <option>Choose your meme image</option>
+      </select>
       <input type="text" id="topText" placeholder="Header text..." />
-      <br><br />
+      <br /><br />
       <input type="text" id="bottomText" placeholder="Bottom text..." />
-      <br>
+      <br />
       <input type="number" id="fontSize" placeholder="Select fontsize..." />
     </div>
-      
+
     <div id="memeImg">
       <button onclick="generateMeme()">Meme Yourself</button>
     </div>

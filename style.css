@@ -5,7 +5,20 @@
   height: fit-content;
 }
 
+* {
+  background: rgb(63, 94, 251);
+  background: linear-gradient(
+    90deg,
+    rgba(63, 94, 251, 1) 0%,
+    rgba(213, 234, 190, 0.9923319669664741) 100%
+  );
+}
+
 /* gallery page */
+.galleryImg {
+  margin-left: 200px;
+  padding-left: 100px;
+}
 
 /* contact page */
 
