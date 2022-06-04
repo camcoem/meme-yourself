@@ -62,17 +62,15 @@ function generateGallery() {
 }
 
 function arrayImg() {
-  const imgNames = [];
   var select = document.getElementById("selectImg");
 
   fetch("https://ronreiter-meme-generator.p.rapidapi.com/images", options)
     .then((response) => response.json())
     .then((response) => {
       let arrayJson = response;
-      imgNames.push(arrayJson);
 
-      for (var i = 0; i < imgNames.length; i++) {
-        var opt = imgNames[i];
+      for (var i = 0; i < arrayJson.length; i++) {
+        var opt = arrayJson[i];
         var el = document.createElement("option");
         el.textContent = opt;
         el.value = opt;
