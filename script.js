@@ -78,6 +78,7 @@ function arrayImg() {
     .then((response) => {
       let arrayJson = response;
 
+      console.log(response);
       for (var i = 0; i < arrayJson.length; i++) {
         var opt = arrayJson[i];
         var el = document.createElement("option");
