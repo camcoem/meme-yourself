@@ -6,9 +6,10 @@ const options = {
   },
 };
 
-const meme = "Advice-Yoda";
-
+//const meme = "Advice-Yoda";
 function generateMeme() {
+  const meme1 = document.getElementById("selectImg");
+  const meme = meme1.options[meme1.selectedIndex].value;
   const topText = document.getElementById("topText").value; //to get the input from the user
   const bottomText = document.getElementById("bottomText").value;
   const fontSize = document.getElementById("fontSize").value;
