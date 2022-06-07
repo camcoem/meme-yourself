@@ -34,7 +34,8 @@ function generateMeme() {
       if (document.querySelector("img") !== null) {
         document.querySelector("img").remove();
       }
-      document.body.appendChild(img);
+
+      document.getElementById("memeImg").appendChild(img);
     })
     .catch((err) => console.error(err));
 }
@@ -48,14 +49,21 @@ function generateGallery() {
       response.forEach((meme) => {
         const img = document.createElement("img");
         img.src = `http://apimeme.com/thumbnail?name=${meme}`;
-        // img.classList.add("card");
+
         const divCard = document.createElement("div");
         divCard.classList.add("card");
-        //document.getElementById("gallery").appendChild(img); //append by ID, to the gallery page
         document
           .getElementById("gallery")
           .appendChild(divCard)
           .appendChild(img);
+
+        const txt = document.createElement("span");
+        txt.innerHTML = meme;
+        if (img.nextSibling) {
+          img.parentNode.insertBefore(txt, img.nextSibling);
+        } else {
+          img.parentNode.appendChild(txt);
+        }
       });
     });
   //.catch((err) => console.error(err));

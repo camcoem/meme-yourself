@@ -116,7 +116,8 @@ details[open]::before {
   100% {
     opacity: 0;
   }
-}ß
+}
+ß
 
 /* index page */
 
@@ -125,15 +126,15 @@ details[open]::before {
   height: fit-content;
 }
 
-/** {
-  background: rgb(63, 94, 251);
+body {
+  background: rgb(227, 239, 240);
   background: linear-gradient(
-    90deg,
-    rgba(63, 94, 251, 1) 0%,
-    rgba(213, 234, 190, 0.9923319669664741) 100%
+    0deg,
+    rgba(227, 239, 240, 1) 0%,
+    rgba(208, 210, 200, 0.465721322708771) 100%
   );
 }
-*/
+
 button {
   /* Variables */
   --button_radius: 0.75em;
@@ -174,8 +175,23 @@ button:active .button_top {
   background: #d6d6d6;
   box-shadow: 31px 31px 62px #878787, -31px -31px 62px #ffffff;
   display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.container {
+  display: flex;
   flex-direction: column;
-  justify-content: center;
+  width: 50%;
+}
+
+.containerRight {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
+  align-content: center;
 }
 
 /* gallery page */
@@ -193,9 +209,8 @@ button:active .button_top {
   justify-content: center;
   align-items: center;
 
-  background: #353535;
   font-size: 40px;
-  color: #fff;
+  color: rgb(18, 17, 17);
   height: 100%;
   width: 100%;
   border-radius: 4px;
