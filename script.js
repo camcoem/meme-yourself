@@ -89,3 +89,23 @@ function arrayImg() {
     })
     .catch((err) => console.error(err));
 }
+
+function randomMemeImg() {
+  fetch("https://ronreiter-meme-generator.p.rapidapi.com/images", options) //from arrayImg()
+    .then((response) => response.json())
+    .then((response) => {
+      let randomImg = response.sort(() => 0.5 - Math.random())[0];
+      //console.log(randomImg.sort(() => 0.5 - Math.random())[0]); --> this is working! we get a random string value out of the array
+    })
+
+    //from here the same as in function generateMeme()
+    .then((randomImg) => {
+      const img = document.createElement("img");
+      img.src = `${randomImg}`;
+      if (document.querySelector("img") !== null) {
+        document.querySelector("img").remove();
+      }
+
+      document.getElementById("memeImg").appendChild(img);
+    });
+}
