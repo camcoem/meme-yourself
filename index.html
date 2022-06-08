@@ -19,17 +19,56 @@
     </details>
     <div class="try">
       <div class="container">
-        <select id="selectImg" onclick="arrayImg()">
+        <select id="selectImg" class="inputSelectBox" onclick="arrayImg()">
           <option>Choose your meme image</option>
         </select>
-        <input type="text" id="topText" placeholder="Header text..." />
-        <br /><br />
-        <input type="text" id="bottomText" placeholder="Bottom text..." />
-        <br />
-        <input type="number" id="fontSize" placeholder="Select fontsize..." />
+
+        <div class="input-group">
+          <input
+            required=""
+            type="text"
+            name="text"
+            autocomplete="off"
+            class="input"
+            id="topText"
+          />
+          <label class="user-label">Header text</label>
+        </div>
+        <div class="input-group">
+          <input
+            required=""
+            type="text"
+            name="text"
+            autocomplete="off"
+            class="input"
+            id="bottomText"
+          />
+          <label class="user-label">Bottom text</label>
+        </div>
+
+        <div class="input-group">
+          <input
+            required=""
+            type="number"
+            name="text"
+            autocomplete="off"
+            class="input"
+            id="fontSize"
+          />
+          <label class="user-label">Select fontsize</label>
+        </div>
+        <!-- <input
+          type="number"
+          class="input"
+          id="fontSize"
+          placeholder="Select fontsize..."
+        /> -->
 
         <button onclick="generateMeme()">
           <span class="button_top">Meme Yourself</span>
+        </button>
+        <button onclick="generateMeme()">
+          <span class="button_top">Your new random meme</span>
         </button>
       </div>
       <div id="memeImg" class="containerRight"></div>
