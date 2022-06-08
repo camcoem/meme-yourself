@@ -7,15 +7,21 @@ const options = {
 };
 
 //const meme = "Advice-Yoda";
-function generateMeme() {
+function generateMeme(type) {
   const meme1 = document.getElementById("selectImg");
   const meme = meme1.options[meme1.selectedIndex].value;
   const topText = document.getElementById("topText").value; //to get the input from the user
   const bottomText = document.getElementById("bottomText").value;
   const fontSize = document.getElementById("fontSize").value;
+  let link= '';
+
+type === 'random' ?
+ link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${ }&bottom=${bottomText}&top=${topText}&font_size=${fontSize}` :
+  link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${meme}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`;
+
 
   fetch(
-    `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${meme}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`,
+   link,
     options
   )
     .then((response) => response.blob())
@@ -32,6 +38,7 @@ function generateMeme() {
     .then((response) => {
       const img = document.createElement("img");
       img.src = `${response}`;
+      img.classList.add("memeRightSide");
       if (document.querySelector("img") !== null) {
         document.querySelector("img").remove();
       }
@@ -40,7 +47,7 @@ function generateMeme() {
     })
     .catch((err) => console.error(err));
 }
-
+generateMeme('random')
 //gallery below
 
 function generateGallery() {
@@ -59,6 +66,8 @@ function generateGallery() {
           .appendChild(img);
 
         const txt = document.createElement("span");
+        txt.style.textAlign = "center";
+
         txt.innerHTML = meme;
         if (img.nextSibling) {
           img.parentNode.insertBefore(txt, img.nextSibling);
@@ -70,42 +79,44 @@ function generateGallery() {
   //.catch((err) => console.error(err));
 }
 
+let arrayJson = [];
+
+fetch("https://ronreiter-meme-generator.p.rapidapi.com/images", options)
+  .then((response) => response.json())
+  .then((response) => {
+    arrayJson = response;
+  })
+  .catch((err) => console.error(err));
+
 function arrayImg() {
   var select = document.getElementById("selectImg");
 
-  fetch("https://ronreiter-meme-generator.p.rapidapi.com/images", options)
-    .then((response) => response.json())
-    .then((response) => {
-      let arrayJson = response;
-
-      console.log(response);
-      for (var i = 0; i < arrayJson.length; i++) {
-        var opt = arrayJson[i];
-        var el = document.createElement("option");
-        el.textContent = opt;
-        el.value = opt;
-        select.appendChild(el);
-      }
-    })
-    .catch((err) => console.error(err));
+  for (var i = 0; i < 50; i++) {
+    var opt = arrayJson[i];
+    var el = document.createElement("option");
+    el.textContent = opt;
+    el.value = opt;
+    select.appendChild(el);
+  }
 }
-
 function randomMemeImg() {
-  fetch("https://ronreiter-meme-generator.p.rapidapi.com/images", options) //from arrayImg()
-    .then((response) => response.json())
-    .then((response) => {
-      let randomImg = response.sort(() => 0.5 - Math.random())[0];
-      //console.log(randomImg.sort(() => 0.5 - Math.random())[0]); --> this is working! we get a random string value out of the array
-    })
+  let test = arrayJson;
+  // fetch("https://ronreiter-meme-generator.p.rapidapi.com/images", options) //from arrayImg()
+  //   .then((response) => response.json())
+  //   .then((response) => {
+  let randomImg = test.sort(() => 0.5 - Math.random())[0];
+  console.log(randomImg);
 
-    //from here the same as in function generateMeme()
-    .then((randomImg) => {
-      const img = document.createElement("img");
-      img.src = `${randomImg}`;
-      if (document.querySelector("img") !== null) {
-        document.querySelector("img").remove();
-      }
+  //let randomImgName = randomImg.sort(() => 0.5 - Math.random())[0];
+  // })
 
-      document.getElementById("memeImg").appendChild(img);
-    });
+  //.then((randomImgName) => {
+  const img = document.createElement("img");
+  img.src = `http://apimeme.com/thumbnail?name=${randomImg}`;
+  if (document.querySelector("img") !== null) {
+    document.querySelector("img").remove();
+  }
+
+  document.getElementById("memeImg").appendChild(img);
+  // });
 }
