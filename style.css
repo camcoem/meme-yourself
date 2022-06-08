@@ -126,11 +126,12 @@ details[open]::before {
 }
 
 body {
-  background: rgb(227, 239, 240);
+  background: rgb(27, 23, 97);
   background: linear-gradient(
-    0deg,
-    rgba(227, 239, 240, 1) 0%,
-    rgba(208, 210, 200, 0.465721322708771) 100%
+    90deg,
+    rgba(27, 23, 97, 1) 0%,
+    rgba(9, 117, 121, 1) 35%,
+    rgba(0, 211, 255, 1) 100%
   );
 }
 
