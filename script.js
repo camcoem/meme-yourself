@@ -15,7 +15,6 @@ fetch("https://ronreiter-meme-generator.p.rapidapi.com/images", options)
   })
   .catch((err) => console.error(err));
 
-//const meme = "Advice-Yoda";
 function generateMeme(type) {
   const meme1 = document.getElementById("selectImg");
   const meme = meme1.options[meme1.selectedIndex].value;
@@ -25,17 +24,9 @@ function generateMeme(type) {
   let randomImg = arrayJson.sort(() => 0.5 - Math.random())[0];
   let link = "";
 
-  console.log(randomImg);
-
-  if (type === "randomImg") {
-    link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${randomImg}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`;
-  } else {
-    link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${meme}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`;
-  }
-
-  // type === "randomImg"
-  //   ? (link = `http://apimeme.com/thumbnail?name=${randomImg}`)
-  //   : (link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${meme}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`);
+  type === meme
+    ? (link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${meme}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`)
+    : (link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${randomImg}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`);
 
   fetch(link, options)
     .then((response) => response.blob())
@@ -103,23 +94,4 @@ function arrayImg() {
     el.value = opt;
     select.appendChild(el);
   }
-}
-
-function randomMemeImg() {
-  let test = arrayJson;
-  fetch("https://ronreiter-meme-generator.p.rapidapi.com/images", options) //from arrayImg()
-    .then((response) => response.json())
-    .then((response) => {
-      let randomImg = test.sort(() => 0.5 - Math.random())[0];
-    })
-
-    .then((randomImgName) => {
-      const img = document.createElement("img");
-      img.src = `http://apimeme.com/thumbnail?name=${randomImg}`;
-      if (document.querySelector("img") !== null) {
-        document.querySelector("img").remove();
-      }
-
-      document.getElementById("memeImg").appendChild(img);
-    });
 }
