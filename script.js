@@ -2,9 +2,18 @@ const options = {
   method: "GET",
   headers: {
     "X-RapidAPI-Host": "ronreiter-meme-generator.p.rapidapi.com",
-    "X-RapidAPI-Key": "a523177b00mshd550b0cc2a61c10p1feac7jsn678482fe3bb0",
+    "X-RapidAPI-Key": "02add68d38mshed0b4bf10cd4185p168326jsn67ef3aa14d63",
   },
 };
+
+let arrayJson = [];
+
+fetch("https://ronreiter-meme-generator.p.rapidapi.com/images", options)
+  .then((response) => response.json())
+  .then((response) => {
+    arrayJson = response;
+  })
+  .catch((err) => console.error(err));
 
 //const meme = "Advice-Yoda";
 function generateMeme(type) {
@@ -13,17 +22,22 @@ function generateMeme(type) {
   const topText = document.getElementById("topText").value; //to get the input from the user
   const bottomText = document.getElementById("bottomText").value;
   const fontSize = document.getElementById("fontSize").value;
-  let link= '';
+  let randomImg = arrayJson.sort(() => 0.5 - Math.random())[0];
+  let link = "";
 
-type === 'random' ?
- link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${ }&bottom=${bottomText}&top=${topText}&font_size=${fontSize}` :
-  link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${meme}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`;
+  console.log(randomImg);
 
+  if (type === "randomImg") {
+    link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${randomImg}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`;
+  } else {
+    link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${meme}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`;
+  }
 
-  fetch(
-   link,
-    options
-  )
+  // type === "randomImg"
+  //   ? (link = `http://apimeme.com/thumbnail?name=${randomImg}`)
+  //   : (link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${meme}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`);
+
+  fetch(link, options)
     .then((response) => response.blob())
     .then((response) => {
       return new Promise((resolve) => {
@@ -47,7 +61,7 @@ type === 'random' ?
     })
     .catch((err) => console.error(err));
 }
-generateMeme('random')
+
 //gallery below
 
 function generateGallery() {
@@ -79,15 +93,6 @@ function generateGallery() {
   //.catch((err) => console.error(err));
 }
 
-let arrayJson = [];
-
-fetch("https://ronreiter-meme-generator.p.rapidapi.com/images", options)
-  .then((response) => response.json())
-  .then((response) => {
-    arrayJson = response;
-  })
-  .catch((err) => console.error(err));
-
 function arrayImg() {
   var select = document.getElementById("selectImg");
 
@@ -99,24 +104,22 @@ function arrayImg() {
     select.appendChild(el);
   }
 }
+
 function randomMemeImg() {
   let test = arrayJson;
-  // fetch("https://ronreiter-meme-generator.p.rapidapi.com/images", options) //from arrayImg()
-  //   .then((response) => response.json())
-  //   .then((response) => {
-  let randomImg = test.sort(() => 0.5 - Math.random())[0];
-  console.log(randomImg);
+  fetch("https://ronreiter-meme-generator.p.rapidapi.com/images", options) //from arrayImg()
+    .then((response) => response.json())
+    .then((response) => {
+      let randomImg = test.sort(() => 0.5 - Math.random())[0];
+    })
 
-  //let randomImgName = randomImg.sort(() => 0.5 - Math.random())[0];
-  // })
+    .then((randomImgName) => {
+      const img = document.createElement("img");
+      img.src = `http://apimeme.com/thumbnail?name=${randomImg}`;
+      if (document.querySelector("img") !== null) {
+        document.querySelector("img").remove();
+      }
 
-  //.then((randomImgName) => {
-  const img = document.createElement("img");
-  img.src = `http://apimeme.com/thumbnail?name=${randomImg}`;
-  if (document.querySelector("img") !== null) {
-    document.querySelector("img").remove();
-  }
-
-  document.getElementById("memeImg").appendChild(img);
-  // });
+      document.getElementById("memeImg").appendChild(img);
+    });
 }
