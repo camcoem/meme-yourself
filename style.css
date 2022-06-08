@@ -126,13 +126,17 @@ details[open]::before {
 }
 
 body {
-  background: rgb(27, 23, 97);
+  background: #83a4d4; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #b6fbff,
+    #83a4d4
+  ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
-    90deg,
-    rgba(27, 23, 97, 1) 0%,
-    rgba(9, 117, 121, 1) 35%,
-    rgba(0, 211, 255, 1) 100%
-  );
+    to right,
+    #b6fbff,
+    #83a4d4
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 button {
