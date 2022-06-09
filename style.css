@@ -153,7 +153,9 @@ body {
 }
 
 /* button styling */
-.button {
+.button,
+.button_top,
+.btnGallery {
   --border-right: 6px;
   --text-stroke-color: rgba(255, 255, 255, 0.6);
   --animation-color: #37ff8b;
@@ -167,6 +169,7 @@ body {
   color: transparent;
   -webkit-text-stroke: 1px var(--text-stroke-color);
 }
+
 /* this is the text, when you hover on button */
 .hover-text {
   position: absolute;
