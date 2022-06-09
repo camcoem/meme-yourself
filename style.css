@@ -176,17 +176,13 @@ button:active .button_top {
 }
 
 .try {
+  border-radius: 50px;
+  background: #353839;
+  box-shadow: 31px 31px 62px rgb(255 128 128), -31px -31px 62px #ffffff;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   width: 100%;
-
-  background: rgba(41, 47, 47, 0.5);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border-radius: 60px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .container {
@@ -239,7 +235,7 @@ button:active .button_top {
 .input:focus,
 input:valid {
   outline: none;
-  border: 1.5px solid #a506df;
+  border: 1.5px solid #1a73e8;
 }
 
 .input:focus ~ label,
@@ -247,7 +243,7 @@ input:valid ~ label {
   transform: translateY(-50%) scale(0.8);
   background-color: #212121;
   padding: 0 0.2em;
-  color: #a506df;
+  color: #2196f3;
 }
 
 /* .input {
