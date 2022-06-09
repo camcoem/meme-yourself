@@ -15,34 +15,13 @@ fetch("https://ronreiter-meme-generator.p.rapidapi.com/images", options)
   })
   .catch((err) => console.error(err));
 
-function generateMeme() {
-  const meme1 = document.getElementById("selectImg");
-  const meme = meme1.options[meme1.selectedIndex].value;
+function generateMeme(memePicture) {
   const topText = document.getElementById("topText").value; //to get the input from the user
   const bottomText = document.getElementById("bottomText").value;
   const fontSize = document.getElementById("fontSize").value;
 
-  // let randomImg = arrayJson.sort(() => 0.5 - Math.random())[0];
-  // let link = "";
-
-  // if (document.getElementById("notRandom").clicked) {
-  //   link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${meme}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`;
-  // } else {
-  //   link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${randomImg}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`;
-  //}
-
-  // if (type == meme) {
-  //   link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${meme}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`;
-  // } else {
-  //   link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${randomImg}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`;
-  // }
-
-  // type === meme
-  //   ? (link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${meme}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`)
-  //   : (link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${randomImg}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`);
-
   fetch(
-    `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${meme}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`,
+    `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${memePicture}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`,
     options
   )
     .then((response) => response.blob())
@@ -70,6 +49,17 @@ function generateMeme() {
     .catch((err) => console.error(err));
 }
 
+document.getElementById("notRandom").addEventListener("click", () => {
+  const meme1 = document.getElementById("selectImg");
+  const meme = meme1.options[meme1.selectedIndex].value;
+
+  generateMeme(meme);
+});
+
+document.getElementById("random").addEventListener("click", () => {
+  let randomImg = arrayJson.sort(() => 0.5 - Math.random())[0];
+  generateMeme(randomImg);
+});
 //gallery below
 
 function generateGallery() {
