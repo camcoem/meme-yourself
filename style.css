@@ -143,6 +143,8 @@ body {
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+/* #37cf6d --> for the card instead of white, maybe? */
+
 .button {
   margin: 0;
   background: transparent;
@@ -224,11 +226,12 @@ button:active .button_top {
   width: 100%;
 
   background: rgba(41, 47, 47, 0.5);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  box-shadow: 0 8px 32px 0 rgba(245, 19, 218, 0.37);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   border-radius: 60px;
   border: 1px solid rgba(255, 255, 255, 0.18);
+  /*box-shadow: 20px 20px 60px #d5d6d9, -20px -20px 60px #ffffff;*/
 }
 
 .container {
@@ -321,7 +324,7 @@ input:valid ~ label {
   align-items: center;
 
   font-size: 20px;
-  color: #e8e8e8;
+  color: #37cf6d;
   height: 100%;
   width: 100%;
   border-radius: 4px;
