@@ -17,9 +17,18 @@
         <a href="#link">About</a>
       </nav>
     </details>
-    <button class="btnGallery" onclick="generateGallery()">
-      Generate Gallery
+
+    <button
+      data-text="Awesome"
+      class="button butnGallery"
+      onclick="generateMeme()"
+    >
+      <span class="actual-text">&nbsp;Meme Gallery&nbsp;</span>
+      <span class="hover-text" aria-hidden="true"
+        >&nbsp;Meme Gallery&nbsp;</span
+      >
     </button>
+    <br />
     <div id="gallery"></div>
     <script src="script.js"></script>
   </body>

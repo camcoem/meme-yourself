@@ -28,17 +28,21 @@ function generateMeme(type) {
   //   link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${meme}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`;
   // } else {
   //   link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${randomImg}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`;
-  // }
+  //}
+  console.log(meme);
+  console.log(randomImg);
 
-  // if (type === meme) {
-  //   link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${meme}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`;
-  // } else {
-  //   link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${randomImg}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`;
-  // }
+  if (type == meme) {
+    link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${meme}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`;
+  } else {
+    link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${randomImg}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`;
+  }
 
-  type === meme
-    ? (link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${meme}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`)
-    : (link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${randomImg}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`);
+  console.log(meme);
+  console.log(randomImg);
+  // type === meme
+  //   ? (link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${meme}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`)
+  //   : (link = `https://ronreiter-meme-generator.p.rapidapi.com/meme?meme=${randomImg}&bottom=${bottomText}&top=${topText}&font_size=${fontSize}`);
 
   fetch(link, options)
     .then((response) => response.blob())
