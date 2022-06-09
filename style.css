@@ -220,7 +220,7 @@ button:active .button_top {
 } */
 
 .try {
-   display: flex;
+  display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   width: 100%;
@@ -281,7 +281,7 @@ button:active .button_top {
 .input:focus,
 input:valid {
   outline: none;
-  border: 1.5px solid #1a73e8;
+  border: 1.5px solid #a506df;
 }
 
 .input:focus ~ label,
@@ -289,7 +289,7 @@ input:valid ~ label {
   transform: translateY(-50%) scale(0.8);
   background-color: #212121;
   padding: 0 0.2em;
-  color: #2196f3;
+  color: #a506df;
 }
 
 /* .input {
