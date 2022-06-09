@@ -1,4 +1,8 @@
 /* nav menu */
+* {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
 
 :root {
   --primColor: #dcdcdc;
@@ -139,8 +143,48 @@ body {
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-button {
-  /* Variables */
+.button {
+  margin: 0;
+  background: transparent;
+  padding: 0;
+  border: none;
+}
+
+/* button styling */
+.button {
+  --border-right: 6px;
+  --text-stroke-color: rgba(255, 255, 255, 0.6);
+  --animation-color: #37ff8b;
+  --fs-size: 2em;
+  letter-spacing: 3px;
+  text-decoration: none;
+  font-size: var(--fs-size);
+  font-family: "Arial";
+  position: relative;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--text-stroke-color);
+}
+/* this is the text, when you hover on button */
+.hover-text {
+  position: absolute;
+  box-sizing: border-box;
+  content: attr(data-text);
+  color: var(--animation-color);
+  width: 0%;
+  inset: 0;
+  border-right: var(--border-right) solid var(--animation-color);
+  overflow: hidden;
+  transition: 0.5s;
+  -webkit-text-stroke: 1px var(--animation-color);
+}
+/* hover */
+.button:hover .hover-text {
+  width: 100%;
+  filter: drop-shadow(0 0 23px var(--animation-color));
+}
+
+/* button {
   --button_radius: 0.75em;
   --button_color: #e8e8e8;
   --button_outline_color: #000000;
@@ -166,14 +210,12 @@ button {
 }
 
 button:hover .button_top {
-  /* Pull the button upwards when hovered */
   transform: translateY(-0.33em);
 }
 
 button:active .button_top {
-  /* Push the button downwards when pressed */
   transform: translateY(0);
-}
+} */
 
 .try {
   display: flex;
@@ -222,9 +264,6 @@ button:active .button_top {
   font-size: 1rem;
   color: #f5f5f5;
   transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.inputSelectBox {
 }
 
 .user-label {
