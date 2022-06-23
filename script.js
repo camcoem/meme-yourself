@@ -1,10 +1,4 @@
-const options = {
-  method: "GET",
-  headers: {
-    "X-RapidAPI-Host": "ronreiter-meme-generator.p.rapidapi.com",
-    "X-RapidAPI-Key": "02add68d38mshed0b4bf10cd4185p168326jsn67ef3aa14d63",
-  },
-};
+options.headers;
 
 let arrayJson = [];
 
